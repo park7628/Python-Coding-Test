@@ -1,3 +1,5 @@
+'''
+
 def solution(answers):
     answer = []
     case1 = [1, 2, 3, 4, 5]
@@ -47,5 +49,35 @@ def solution(answers):
             
         
     return answer
+L = [1, 2, 3, 4, 5, 1, 3, 5, 2, 4]
+print(solution(L))
+
+'''
+
+def solution(answers):
+    answer = []
+    case1 = [1, 2, 3, 4, 5]
+    case2 = [2, 1, 2, 3, 2, 4, 2, 5]
+    case3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+    count = [0, 0, 0]
+    
+    # 답안과 비교하며 각 case의 정답 개수를 셈
+    for i in range(len(answers)):
+        if case1[i % len(case1)] == answers[i]:
+            count[0] += 1
+        if case2[i % len(case2)] == answers[i]:
+            count[1] += 1
+        if case3[i % len(case3)] == answers[i]:
+            count[2] += 1
+    
+    # 가장 많은 정답을 맞춘 사람(들)을 찾기
+    max_count = max(count)  # max(count)를 한 번만 계산
+    for k in range(1, 4):
+        if count[k - 1] == max_count:
+            answer.append(k)
+
+    return answer
+
+# 테스트 코드
 L = [1, 2, 3, 4, 5, 1, 3, 5, 2, 4]
 print(solution(L))
